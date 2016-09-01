@@ -1,0 +1,19 @@
+{% from "_formhelpers.html" import render_field %}
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+    {{ form.email.label }} {{ form.email(size=20) }}
+    {{ form.password.label }} {{ form.password(size=20) }}
+    {{ form.remember_me.label }} {{ form.remember_me }}
+    <input type="submit" value="Go">
+      {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</form>
