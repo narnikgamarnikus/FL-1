@@ -1,4 +1,4 @@
-from app import db,unicode,UserMixin, generate_password_hash, check_password_hash
+#from app import db,unicode,UserMixin, generate_password_hash, check_password_hash
 
 ROLE_USER = 0
 ROLE_ADMIN = 1

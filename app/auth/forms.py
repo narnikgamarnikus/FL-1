@@ -1,5 +1,3 @@
-from app import (views,
-                 models)
 from wtforms import (StringField,
                      PasswordField,
                      BooleanField)

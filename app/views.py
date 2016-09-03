@@ -1,16 +1,9 @@
-from app import (app,
-                 request,
+from flask import (request,
                  render_template,
                  url_for,
                  redirect,
                  flash,
-                 session,
-                 db,
-                 g,
-                 lm,
-                 validators,
-                 check_password_hash,
-                 generate_password_hash)
+                 session)
 from flask_login import (login_user,
                          logout_user,
                          current_user,
@@ -18,15 +11,13 @@ from flask_login import (login_user,
                          unicode,
                          make_next_param,
                          abort)
-from .models import (User,
-                     ROLE_USER,
-                     ROLE_ADMIN)
-from .forms import (RegistrationForm,
-                    LoginForm)
+#from .models import (User,
+                     #ROLE_USER,
+                     #ROLE_ADMIN)
+#from .forms import (RegistrationForm,
+                    #LoginForm)
 
-@app.before_request
-def before_request():
-    g.user = current_user
+
 
 
 @app.route('/')
