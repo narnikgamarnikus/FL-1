@@ -21,11 +21,14 @@ from .forms import LoginForm
 def before_request():
     g.user = current_user
 
+@auth.route('/hello')
+def hello():
+    return render_template('auth/hello.html')
 
 @auth.route('/')
 @auth.route('/index')
 def index():
-    return render_template('index.html')
+    return render_template('auth/hello.html')
 
 @lm.user_loader
 def load_user(id):
@@ -34,7 +37,7 @@ def load_user(id):
 @auth.route('/login', methods=('GET', 'POST'))
 def auth_login():
     if g.user is not None and g.user.is_authenticated:
-        return redirect(url_for('auth.index', title=g.user.username))
+        return redirect(url_for('auth.hello', title=g.user.username))
 
     form = LoginForm(request.form)
     if form.validate_on_submit():
@@ -44,14 +47,14 @@ def auth_login():
             session['remember_me'] = form.remember_me.data
             login_user(user)
             flash('Welcome %s' % user.username)
-            return redirect(url_for('auth.index',  title=g.user.username))
+            return redirect(url_for('auth.hello',  title=g.user.username))
         flash(print(check_password_hash(user.password,user.password)))
         flash('Wrong email or password', 'error-message')
 
-    return render_template("auth/login.html", form=form)
+    return render_template("auth/login2.html", form=form)
 
 @auth.route("/logout")
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('auth.hello'))

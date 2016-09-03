@@ -1,5 +1,7 @@
-{% from "_formhelpers.html" import render_field %}
-<form method="POST" action="">
+{% extends "auth/hello.html" %}
+{% block form %}
+{#% from "_formhelpers.html" import render_field %#}
+<form class="form form-horizontal" method="POST" role="form">
     {{ form.hidden_tag() }}
     {{ form.csrf_token }}
     {{ form.email.label }} {{ form.email(size=20) }}
@@ -17,3 +19,4 @@
     {% endwith %}
     {% block content %}{% endblock %}
 </form>
+{% endblock form %}

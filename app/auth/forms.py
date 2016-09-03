@@ -16,6 +16,6 @@ class RegistrationForm(Form):
 
 class LoginForm(Form):
     email = StringField('Email', validators=[DataRequired()])
-    password = PasswordField('New Password', validators=[DataRequired(message='Must provide a password. ;-)')])
+    password = PasswordField('Password', validators=[DataRequired(message='Must provide a password. ;-)')])
     remember_me = BooleanField('Remember me', default=False)
 
